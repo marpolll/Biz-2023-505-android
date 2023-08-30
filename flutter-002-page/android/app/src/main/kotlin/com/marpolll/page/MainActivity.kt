@@ -1,0 +1,6 @@
+package com.marpolll.page
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
