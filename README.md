@@ -54,5 +54,3 @@ flutter doctor --android-licenses
 ```bash
 flutter pub get
 ```
-
-- flutter create --org=com.marpolll page
