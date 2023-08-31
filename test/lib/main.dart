@@ -22,21 +22,21 @@ class _MyAppState extends State<MyApp> {
   var _incorrectAnswers = 0; // 오답 개수를 저장하는 변수
   final _questions = const [
     {
-      'questionText': 'Whats your favorite color?',
+      'questionText': '프로그래밍 언어가 아닌것은?',
       'answers': [
-        {'text': 'Black', 'score': 10},
-        {'text': 'Red', 'score': 7},
-        {'text': 'Green', 'score': 4},
-        {'text': 'white', 'score': 1},
+        {'text': '자바', 'score': 10},
+        {'text': 'c', 'score': 7},
+        {'text': 'c++', 'score': 4},
+        {'text': 'flutter', 'score': 1},
       ],
     },
     {
-      'questionText': 'Whats your favorite animal?',
+      'questionText': '컴파일러 설명중 틀린것은?',
       'answers': [
-        {'text': 'Dog', 'score': 10},
-        {'text': 'Cat', 'score': 7},
-        {'text': 'Lion', 'score': 4},
-        {'text': 'Tiger', 'score': 1},
+        {'text': '머머머', 'score': 10},
+        {'text': '기계어로 변환', 'score': 7},
+        {'text': '자바', 'score': 4},
+        {'text': '가가', 'score': 1},
       ],
     },
   ];
@@ -65,9 +65,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('My first App'),
+            backgroundColor: Colors.red,
+            title: const Center(
+              child: Text(
+                '퀴즈퀴즈',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           ),
           body: _questionIndex < _questions.length
               ? Quiz(
