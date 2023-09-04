@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  var _totalScore = 0;
+  var _totalScore = 0; // 점수 계산
   var _correctAnswers = 0; // 정답 개수를 저장하는 변수
   var _incorrectAnswers = 0; // 오답 개수를 저장하는 변수
   final _questions = const [
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         {'text': '자바', 'score': 10},
         {'text': 'c', 'score': 7},
         {'text': 'c++', 'score': 4},
-        {'text': 'flutter', 'score': 1},
+        {'text': 's+', 'score': 1, 'corerect': true},
       ],
     },
     {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       'answers': [
         {'text': '머머머', 'score': 10},
         {'text': '기계어로 변환', 'score': 7},
-        {'text': '자바', 'score': 4},
+        {'text': '자바', 'score': 4, 'corerect': true},
         {'text': '가가', 'score': 1},
       ],
     },
@@ -49,16 +49,23 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _answerQuestion(int score) {
-    _totalScore += score;
+    final answers =
+        _questions[_questionIndex]['answers'] as List<Map<String, dynamic>>?;
 
-    if (score > 0) {
-      _correctAnswers++; // 정답 선택시 정답 개수 증가
+    if (answers != null && answers.any((answer) => answer['correct'] == true)) {
+      _correctAnswers++;
     } else {
-      _incorrectAnswers++; // 오답 선택시 오답 개수 증가
+      _incorrectAnswers++;
     }
 
+    _totalScore += score;
+
     setState(() {
-      _questionIndex = _questionIndex + 1;
+      if (_questionIndex < _questions.length - 1) {
+        _questionIndex = _questionIndex + 1; // 다음 문제로 넘어감
+      } else {
+        _questionIndex = _questionIndex + 1;
+      }
     });
   }
 
@@ -67,22 +74,24 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       // theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.red,
-            title: const Center(
-              child: Text(
-                '퀴즈퀴즈',
-                style: TextStyle(color: Colors.black),
-              ),
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: const Center(
+            child: Text(
+              '퀴즈퀴즈',
+              style: TextStyle(color: Colors.white),
             ),
           ),
-          body: _questionIndex < _questions.length
-              ? Quiz(
-                  answerQuestion: _answerQuestion,
-                  questionIndex: _questionIndex,
-                  questions: _questions)
-              : Result(
-                  _totalScore, _resetQuiz, _correctAnswers, _incorrectAnswers)),
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions)
+            : Result(
+                _totalScore, _resetQuiz, _correctAnswers, _incorrectAnswers),
+        backgroundColor: Colors.black,
+      ),
     );
   }
 }

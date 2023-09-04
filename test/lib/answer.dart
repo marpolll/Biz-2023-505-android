@@ -11,12 +11,12 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 50),
       child: ElevatedButton(
         onPressed: selectHandler,
         child: Text(
           answerText,
-          style: const TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18, color: Colors.black),
         ),
       ),
     );
