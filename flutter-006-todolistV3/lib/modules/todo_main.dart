@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todolist/models/todo.dart';
-
-void main() {
-  runApp(const App());
-}
-
-class App extends StatelessWidget {
-  const App({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: StartPage(),
-    );
-  }
-}
+import 'package:todolist/service/todo_service.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -105,7 +91,8 @@ class _StartPage extends State<StartPage> {
                 onPressed: () {
                   var todo = getTodo(todoContent);
                   setState(() {
-                    todoList.add(todo);
+                    // todoList.add(todo);
+                    TodoService().insert(todo);
                     todoContent = "";
                     inputController.clear();
                   });
@@ -117,9 +104,25 @@ class _StartPage extends State<StartPage> {
         ),
       ),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: todoListView(),
-      ),
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: FutureBuilder(
+            /// future 는 실제 데이터를 가죠오는 속성
+            /// 여기에서 가져오는 데이터는 builder 에게 snapshot 에 담아서 전달
+            future: TodoService().selectAll(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return todoListView(
+                  snapshot: snapshot,
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    semanticsLabel: "데이터 없음",
+                  ),
+                );
+              }
+            },
+          )),
     );
   }
 
@@ -127,7 +130,9 @@ class _StartPage extends State<StartPage> {
   /// 모든 Widget 은 가장 상위 클래스인 Widget 을
   /// 상속 받고 있기 때문에 모든 Widget의 return 은
   /// Widget 으로 설정하여도 된다.
-  Widget todoListView() {
+  Widget todoListView({required AsyncSnapshot<List<Todo>> snapshot}) {
+    /// snapshot 으로부터 실제 todoList 를 뽑아서 todoList 에 담기
+    var todoList = snapshot.data!;
     return ListView.builder(
       itemCount: todoList.length,
       itemBuilder: (context, index) {
@@ -181,8 +186,10 @@ class _StartPage extends State<StartPage> {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text("${todoList[index].content} 를 삭제 하였습니다."),
                 ));
+
+                TodoService().delete(todoList[index].id ?? 0);
                 setState(() {
-                  todoList.removeAt(index);
+                  // todoList.removeAt(index);
                 });
               }
             },
