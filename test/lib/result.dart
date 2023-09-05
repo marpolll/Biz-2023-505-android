@@ -46,7 +46,17 @@ class Result extends StatelessWidget {
             style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all(Colors.blue)),
             onPressed: resetHandler,
-            child: const Text('Restart Quiz!')),
+            child: const Text('문제확인')),
+        TextButton(
+            style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(Colors.blue)),
+            onPressed: resetHandler,
+            child: const Text('퀴즈다시풀기')),
+        TextButton(
+            style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(Colors.blue)),
+            onPressed: resetHandler,
+            child: const Text('메인으로')),
       ]),
     );
   }

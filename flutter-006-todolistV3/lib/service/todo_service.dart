@@ -1,8 +1,9 @@
-import 'dart:io';
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todolist/models/todo.dart';
+
+// ignore: constant_identifier_names
+const String TBL_TODO = "tbl_todolist";
 
 /// 안드로이드, 아이폰 에는 공통으로 SQLite 라는 RDBMS 가 내장 되어있다.
 /// 규모는 매우 작지만 phone 에서 DB 를 SQL 을 사용하여 관리할수 있도록
@@ -16,9 +17,9 @@ class TodoService {
   /// 이 값은 null 이 아니다 라는 선언
   /// 즉, 곧 이 변수는 누군가가 초기화(값 부여)를 할 것이다.
   late Database _database;
-  final String TBL_TODO = "tbl_todolist";
+
   final String createTABLE = """
-    CREATE TABLE tbl_todolist (
+    CREATE TABLE $TBL_TODO (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       sdate TEXT,
       stime TEXT,
