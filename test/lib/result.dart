@@ -31,16 +31,17 @@ class Result extends StatelessWidget {
       child: Column(children: <Widget>[
         Text(
           resultPhrase,
-          style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
           textAlign: TextAlign.center,
         ),
         Text(
-          'Correct Answers: $correctAnswers', // 정답 개수 표시
-          style: const TextStyle(fontSize: 20),
+          '정답: $correctAnswers', // 정답 개수 표시
+          style: const TextStyle(fontSize: 20, color: Colors.white),
         ),
         Text(
-          'Incorrect Answers: $incorrectAnswers', // 오답 개수 표시
-          style: const TextStyle(fontSize: 20),
+          '오답: $incorrectAnswers', // 오답 개수 표시
+          style: const TextStyle(fontSize: 20, color: Colors.white),
         ),
         TextButton(
             style: ButtonStyle(
@@ -52,11 +53,17 @@ class Result extends StatelessWidget {
                 foregroundColor: MaterialStateProperty.all(Colors.blue)),
             onPressed: resetHandler,
             child: const Text('퀴즈다시풀기')),
-        TextButton(
-            style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all(Colors.blue)),
-            onPressed: resetHandler,
-            child: const Text('메인으로')),
+        // TextButton(
+        //     style: ButtonStyle(
+        //         foregroundColor: MaterialStateProperty.all(Colors.blue)),
+        //     onPressed: () {
+        //       Navigator.of(context).push(
+        //         MaterialPageRoute(
+        //           builder: (ctx) => const HomePage(), // 홈으로이동
+        //         ),
+        //       );
+        //     },
+        //     child: const Text('메인으로')),
       ]),
     );
   }

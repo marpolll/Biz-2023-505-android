@@ -214,44 +214,40 @@ class HomePage extends StatelessWidget {
           )),
       drawer: Drawer(
         child: ListView(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: const Text("hong"),
-              accountEmail: const Text("hong@naver.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.red,
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        "images/sun.jpg",
-                      ),
-                    ),
-                    const Text("hong"),
-                  ],
-                ),
-              ),
+          children: const [
+            // UserAccountsDrawerHeader(
+            //   accountName: const Text("hong"),
+            //   accountEmail: const Text("hong@naver.com"),
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundColor: Colors.red,
+            //     child: Column(
+            //       children: [
+            //         ClipRRect(
+            //           borderRadius: BorderRadius.circular(50),
+            //           child: Image.asset(
+            //             "images/sun.jpg",
+            //           ),
+            //         ),
+            //         const Text("hong"),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            ListTile(
+              title: Text("마이페이지"),
+              leading: Icon(Icons.person),
             ),
-            const ListTile(
-              title: Text("전체 메일보기"),
-              leading: Icon(Icons.email),
-            ),
-            const Divider(
+            Divider(
               height: 0.1,
             ),
-            const ListTile(
-              title: Text("받은메일함"),
-              leading: Icon(Icons.inbox),
+            ListTile(
+              title: Text("학습하기"),
+              leading: Icon(Icons.book),
             ),
-            const ListTile(
-              title: Text("페이스북"),
-              leading: Icon(Icons.facebook),
+            ListTile(
+              title: Text("기록"),
+              leading: Icon(Icons.timelapse),
             ),
-            const ListTile(
-              title: Text("트위터"),
-              leading: Icon(Icons.surfing),
-            )
           ],
         ),
       ),
@@ -270,11 +266,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        ElevatedButton.icon(
-          onPressed: () => {},
-          icon: const Icon(Icons.clear),
-          label: const Text("메인으로"),
-        )
       ],
       body: Center(
         child: Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/main.dart';
 
 import '../quiz.dart';
 import '../result.dart';
@@ -89,6 +90,19 @@ class _QuizPageL extends State<QuizPageL> {
             : Result(
                 _totalScore, _resetQuiz, _correctAnswers, _incorrectAnswers),
         backgroundColor: Colors.black,
+        persistentFooterButtons: [
+          ElevatedButton.icon(
+            onPressed: () => {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => const HomePage(), // 홈으로이동
+                ),
+              )
+            },
+            icon: const Icon(Icons.home),
+            label: const Text("메인으로"),
+          )
+        ],
       ),
     );
   }
