@@ -132,8 +132,8 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                       child: const SizedBox(
-                        width = double.infinity,
-                        child = Text(
+                        width: double.infinity,
+                        child: Text(
                           "구글 로그인",
                           textAlign: TextAlign.center,
                         ),
