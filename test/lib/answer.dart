@@ -10,6 +10,12 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // decoration: const BoxDecoration(
+      //   image: DecorationImage(
+      //     fit: BoxFit.cover,
+      //     image: AssetImage("images/back.jpg"),
+      //   ),
+      // ),
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 50),
       child: ElevatedButton(
