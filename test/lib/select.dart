@@ -1,7 +1,4 @@
-// 새로운 페이지: 문제 수를 입력하는 페이지
-
 import 'package:flutter/material.dart';
-import 'package:test/quiz.dart';
 
 class SelectQuestionCountPage extends StatefulWidget {
   const SelectQuestionCountPage({super.key});

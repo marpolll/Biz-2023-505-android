@@ -18,231 +18,186 @@ class _QuizPageH extends State<QuizPageH> {
   // var _totalScore = 0;
   var _correctAnswers = 0; // 정답 개수를 저장하는 변수
   var _incorrectAnswers = 0; // 오답 개수를 저장하는 변수
-  int _currentProgress = 1;
+  // int _currentProgress = 1;
   final _questions = const [
     {
-      'questionText': '중간중간중간',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '컴파일러 설명중 틀린것은?',
+      'questionText': '',
       'answers': [
-        {'text': '머머머', 'correct': false},
-        {'text': '기계어로 변환', 'correct': false},
-        {'text': '자바', 'correct': true},
-        {'text': '가가', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '1',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '2',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '3',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '4',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '5',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '6',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '7',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '8',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '9',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '10',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '11',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '12',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '13',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '14',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '15',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '16',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '17',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
     {
-      'questionText': '18',
+      'questionText': '',
       'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '19',
-      'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '20',
-      'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '21',
-      'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '22',
-      'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '23',
-      'answers': [
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': false},
-        {'text': '중간', 'correct': true},
-        {'text': '중간', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
+        {'text': '', 'correct': false},
       ],
     },
   ];
@@ -254,15 +209,15 @@ class _QuizPageH extends State<QuizPageH> {
       _correctAnswers = 0; // 퀴즈 재시작시 정답 개수 초기화
       _incorrectAnswers = 0; // 퀴즈 재시작시 오답 개수 초기화
       _usedQuestionIndices.clear();
-      _currentProgress = 1;
+      // _currentProgress = 1;
     });
   }
 
-  void _updateProgress() {
-    setState(() {
-      _currentProgress++;
-    });
-  }
+  // void _updateProgress() {
+  //   setState(() {
+  //     _currentProgress++;
+  //   });
+  // }
 
   void _answerQuestion(bool isCorrect) {
     setState(() {
@@ -282,7 +237,7 @@ class _QuizPageH extends State<QuizPageH> {
       _usedQuestionIndices.remove(newIndex);
 
       // Update progress
-      _updateProgress();
+      // _updateProgress();
 
       if (_usedQuestionIndices.isNotEmpty) {
         // 아직 사용하지 않은 문제가 있다면 퀴즈 계속 진행
@@ -331,7 +286,7 @@ class _QuizPageH extends State<QuizPageH> {
                 questionIndex: _questionIndex,
                 questions: _questions,
                 totalQuestions: _questions.length,
-                progress: _currentProgress,
+                // progress: _currentProgress,
               )
             : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
         backgroundColor: Colors.black,

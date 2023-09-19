@@ -48,17 +48,6 @@ class Result extends StatelessWidget {
                             MaterialStateProperty.all(Colors.blue)),
                     onPressed: resetHandler,
                     child: const Text('퀴즈다시풀기')),
-                // TextButton(
-                //     style: ButtonStyle(
-                //         foregroundColor: MaterialStateProperty.all(Colors.blue)),
-                //     onPressed: () {
-                //       Navigator.of(context).push(
-                //         MaterialPageRoute(
-                //           builder: (ctx) => const HomePage(), // 홈으로이동
-                //         ),
-                //       );
-                //     },
-                //     child: const Text('메인으로')),
               ]),
         ),
       ]),

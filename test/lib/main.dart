@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                '퀴즈 난이도를 선택해 주세요',
+                '퀴즈를 선택해 주세요',
                 style: TextStyle(fontSize: 24, color: Colors.white),
               ),
               const SizedBox(height: 20),
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  '상',
+                  '정보처리기사',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  '하',
+                  '일반상식',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
