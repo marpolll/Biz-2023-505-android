@@ -326,7 +326,7 @@ class _QuizPageM extends State<QuizPageM> {
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
                 questions: _questions,
-                totalQuestions: _questions.length,
+                // totalQuestions: _questions.length,
                 // progress: _currentProgress,
               )
             : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),

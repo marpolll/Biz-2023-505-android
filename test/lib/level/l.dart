@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/main.dart';
-import 'dart:math';
+// import 'package:test/main.dart';
+// import 'dart:math';
 import '../quiz.dart';
 import '../result.dart';
 
@@ -12,13 +13,21 @@ class QuizPageL extends StatefulWidget {
 }
 
 class _QuizPageL extends State<QuizPageL> {
-  final _usedQuestionIndices =
-      Set<int>.from(List.generate(20, (index) => index));
+  // final _usedQuestionIndices =
+  //     Set<int>.from(List.generate(5, (index) => index));
   var _questionIndex = 0;
   // var _totalScore = 0;
   var _correctAnswers = 0; // 정답 개수를 저장하는 변수
   var _incorrectAnswers = 0; // 오답 개수를 저장하는 변수
-  // int _currentProgress = 1;
+  var _progress = 0.0;
+// class _QuizPageL extends State<QuizPageL> {
+  // final _usedQuestionIndices =
+  //     Set<int>.from(List.generate(20, (index) => index));
+//   var _questionIndex = 0;
+//   // var _totalScore = 0;
+//   var _correctAnswers = 0; // 정답 개수를 저장하는 변수
+//   var _incorrectAnswers = 0; // 오답 개수를 저장하는 변수
+//   // int _currentProgress = 1;
   final _questions = const [
     {
       'questionText': '태양계에서 몇 개의 행성이 태양 주변을 공전하고 있을까요?',
@@ -208,8 +217,9 @@ class _QuizPageL extends State<QuizPageL> {
       // _totalScore = 0;
       _correctAnswers = 0; // 퀴즈 재시작시 정답 개수 초기화
       _incorrectAnswers = 0; // 퀴즈 재시작시 오답 개수 초기화
-      _usedQuestionIndices.clear();
+      // _usedQuestionIndices.clear();
       // _currentProgress = 1;
+      _progress = 0.0;
     });
   }
 
@@ -218,82 +228,6 @@ class _QuizPageL extends State<QuizPageL> {
   //     _currentProgress++;
   //   });
   // }
-
-  void _answerQuestion(bool isCorrect) {
-    setState(() {
-      if (isCorrect) {
-        _correctAnswers++;
-      } else {
-        _incorrectAnswers++;
-      }
-
-      // 사용하지 않은 문제들 중에서 랜덤으로 문제 선택
-      int newIndex;
-      do {
-        newIndex = Random().nextInt(_questions.length);
-      } while (!_usedQuestionIndices.contains(newIndex));
-
-      // 선택된 문제를 사용한 문제들 집합에서 제거
-      _usedQuestionIndices.remove(newIndex);
-
-      // Update progress
-      // _updateProgress();
-
-      if (_usedQuestionIndices.isNotEmpty) {
-        // 아직 사용하지 않은 문제가 있다면 퀴즈 계속 진행
-        _questionIndex = newIndex; // 수정된 부분
-      } else {
-        // 퀴즈 종료 후 결과 페이지로 이동
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (ctx) =>
-                Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
-          ),
-        );
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Center(
-            child: Text(
-              '퀴즈퀴즈',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (ctx) => const HomePage(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.home),
-            ),
-          ],
-        ),
-        body: _usedQuestionIndices.isNotEmpty
-            ? Quiz(
-                answerQuestion: _answerQuestion,
-                questionIndex: _questionIndex,
-                questions: _questions,
-                totalQuestions: _questions.length,
-                // progress: _currentProgress,
-              )
-            : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
-        backgroundColor: Colors.black,
-      ),
-    );
-  }
-}
 
 //   void _answerQuestion(bool isCorrect) {
 //     setState(() {
@@ -312,12 +246,12 @@ class _QuizPageL extends State<QuizPageL> {
 //       // 선택된 문제를 사용한 문제들 집합에서 제거
 //       _usedQuestionIndices.remove(newIndex);
 
-//       // 선택된 문제로 변경
-//       _questionIndex = newIndex;
+//       // Update progress
+//       // _updateProgress();
 
 //       if (_usedQuestionIndices.isNotEmpty) {
 //         // 아직 사용하지 않은 문제가 있다면 퀴즈 계속 진행
-//         // 여기에 다음 문제로 넘어가는 로직을 추가할 수 있습니다.
+//         _questionIndex = newIndex; // 수정된 부분
 //       } else {
 //         // 퀴즈 종료 후 결과 페이지로 이동
 //         Navigator.of(context).push(
@@ -333,7 +267,6 @@ class _QuizPageL extends State<QuizPageL> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
-//       // theme: ThemeData(primarySwatch: Colors.blue),
 //       debugShowCheckedModeBanner: false,
 //       home: Scaffold(
 //         appBar: AppBar(
@@ -357,6 +290,64 @@ class _QuizPageL extends State<QuizPageL> {
 //             ),
 //           ],
 //         ),
+//         body: _usedQuestionIndices.isNotEmpty
+//             ? Quiz(
+//                 answerQuestion: _answerQuestion,
+//                 questionIndex: _questionIndex,
+//                 questions: _questions,
+//                 totalQuestions: _questions.length,
+//                 // progress: _currentProgress,
+//               )
+//             : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
+//         backgroundColor: Colors.black,
+//       ),
+//     );
+//   }
+// }
+
+  void _updateProgress() {
+    setState(() {
+      _progress = (_questionIndex + 1) / _questions.length;
+    });
+  }
+
+  void _answerQuestion(bool isCorrect) {
+    setState(() {
+      if (isCorrect) {
+        _correctAnswers++;
+      } else {
+        _incorrectAnswers++;
+      }
+
+      if (_questionIndex < _questions.length - 1) {
+        _updateProgress();
+        _questionIndex++;
+      } else {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (ctx) =>
+                Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
+          ),
+        );
+      }
+    });
+  }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       // theme: ThemeData(primarySwatch: Colors.blue),
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         // appBar: AppBar(
+//         //   backgroundColor: Colors.red,
+//         //   title: const Center(
+//         //     child: Text(
+//         //       '퀴즈퀴즈',
+//         //       style: TextStyle(color: Colors.white),
+//         //     ),
+//         //   ),
+//         // ),
 //         body: _questionIndex < _questions.length
 //             ? Quiz(
 //                 answerQuestion: _answerQuestion,
@@ -364,7 +355,66 @@ class _QuizPageL extends State<QuizPageL> {
 //                 questions: _questions)
 //             : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
 //         backgroundColor: Colors.black,
+//         // persistentFooterButtons: [
+//         //   ElevatedButton.icon(
+//         //     onPressed: () => {
+//         //       Navigator.of(context).push(
+//         //         MaterialPageRoute(
+//         //           builder: (ctx) => const HomePage(), // 홈으로이동
+//         //         ),
+//         //       )
+//         //     },
+//         //     icon: const Icon(Icons.home),
+//         //     label: const Text("메인으로"),
+//         //   )
+//         // ],
 //       ),
 //     );
 //   }
 // }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // theme: ThemeData(primarySwatch: Colors.blue),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Column(
+            children: [
+              const Text(
+                '일반상식',
+                style: TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 5.0), // Adjust the spacing
+              Text(
+                '문제 ${_questionIndex + 1} / ${_questions.length}',
+                style: const TextStyle(color: Colors.white, fontSize: 14.0),
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => const HomePage(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.home),
+            ),
+          ],
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions)
+            : Result(_resetQuiz, _correctAnswers, _incorrectAnswers),
+        backgroundColor: Colors.black,
+      ),
+    );
+  }
+}

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:test/anmation.dart';
+import 'package:test/level/db.dart';
 import 'package:test/level/h.dart';
 import 'package:test/level/l.dart';
-import 'package:test/level/m.dart';
+import 'package:test/level/prolan.dart';
+import 'package:test/level/soft.dart';
+import 'package:test/level/system.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +38,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.black,
           title: const Center(
             child: Text(
-              '퀴즈퀴즈',
+              '정보처리기사',
               style: TextStyle(color: Colors.white),
             ),
           )),
@@ -46,7 +49,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                '퀴즈를 선택해 주세요',
+                '과목을 선택하세요',
                 style: TextStyle(fontSize: 24, color: Colors.white),
               ),
               const SizedBox(height: 20),
@@ -67,7 +70,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  '정보처리기사',
+                  '소프트웨어 설계',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -79,7 +82,7 @@ class HomePage extends StatelessWidget {
                   // 홈 페이지에서 퀴즈 페이지로 이동
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (ctx) => const QuizPageM(), // 퀴즈 페이지로 이동
+                      builder: (ctx) => const QuizPageH2(), // 퀴즈 페이지로 이동
                     ),
                   );
                 },
@@ -91,7 +94,79 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  '중',
+                  '소프트웨어 개발',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // 홈 페이지에서 퀴즈 페이지로 이동
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => const QuizPageH3(), // 퀴즈 페이지로 이동
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white54, // 텍스트 색상
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0), // 버튼의 모양을 변경
+                  ),
+                ),
+                child: const Text(
+                  '데이터베이스 구축',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // 홈 페이지에서 퀴즈 페이지로 이동
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => const QuizPageH4(), // 퀴즈 페이지로 이동
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white54, // 텍스트 색상
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0), // 버튼의 모양을 변경
+                  ),
+                ),
+                child: const Text(
+                  '프로그래밍 언어 활용',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // 홈 페이지에서 퀴즈 페이지로 이동
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => const QuizPageH5(), // 퀴즈 페이지로 이동
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white54, // 텍스트 색상
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0), // 버튼의 모양을 변경
+                  ),
+                ),
+                child: const Text(
+                  '정보시스템 구축 관리',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,

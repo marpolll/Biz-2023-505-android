@@ -4,16 +4,16 @@ import 'dart:math';
 import '../quiz.dart';
 import '../result.dart';
 
-class QuizPageH extends StatefulWidget {
-  const QuizPageH({super.key});
+class QuizPageH2 extends StatefulWidget {
+  const QuizPageH2({super.key});
 
   @override
-  State<StatefulWidget> createState() => _QuizPageH();
+  State<StatefulWidget> createState() => _QuizPageH2();
 }
 
-class _QuizPageH extends State<QuizPageH> {
+class _QuizPageH2 extends State<QuizPageH2> {
   final _usedQuestionIndices =
-      Set<int>.from(List.generate(10, (index) => index));
+      Set<int>.from(List.generate(5, (index) => index));
   var _questionIndex = 0;
   // var _totalScore = 0;
   var _correctAnswers = 0; // 정답 개수를 저장하는 변수
@@ -21,134 +21,48 @@ class _QuizPageH extends State<QuizPageH> {
   // int _currentProgress = 1;
   final _questions = const [
     {
-      'questionText': 'XP 개발 방법론과 관련이 없는 것은?',
+      'questionText': 'n개의 노드로 구성된 방향 그래프와 최대 간선 수는?',
       'answers': [
-        {'text': '짝 프로그래밍(Pair Programming)', 'correct': false},
-        {'text': '번 다운 차트(Burn Down Chart)', 'correct': true},
-        {'text': '테스트 기반 개발(Test-Driven Development)', 'correct': false},
-        {'text': '작은 릴리즈(Small Release)', 'correct': false},
+        {'text': 'n-1', 'correct': false},
+        {'text': 'n/2', 'correct': false},
+        {'text': 'n(n-1)/2', 'correct': false},
+        {'text': 'n(n-1)', 'correct': true},
       ],
     },
     {
-      'questionText': '다음 중 디자인 패턴의 생성 패턴으로 올바른 것은?',
+      'questionText': '문제를 나눌 수 없을 때까지 나누고, 각각을 풀면서 다시 병합하여 문제의 답을 얻는 알고리즘은?',
       'answers': [
-        {'text': 'Singleton Pattern', 'correct': true},
-        {'text': 'Observer Pattern', 'correct': false},
-        {'text': 'Proxy Pattern', 'correct': false},
-        {'text': 'Template Pattern', 'correct': false},
+        {'text': '탐욕법(Greedy)', 'correct': false},
+        {'text': '동적계획법(Dynamic Programming)', 'correct': false},
+        {'text': '분할과 정복(Divide and Conquer)', 'correct': true},
+        {'text': '백트래킹(Backtracking)', 'correct': false},
       ],
     },
     {
-      'questionText': '소프트웨어 아키텍처 4+1 뷰 구성 요소로 올바르지 않은 것은? ',
+      'questionText': ' 다음 중 결함 조치 상태(=오류 목록 상태) 중오류가 보고되었지만 아직 분석되지 않은 상태는?',
       'answers': [
-        {'text': '논리 뷰', 'correct': false},
-        {'text': '프로세스 뷰', 'correct': false},
-        {'text': '구현 뷰', 'correct': false},
-        {'text': '인터페이스 뷰', 'correct': true},
+        {'text': 'Open', 'correct': true},
+        {'text': 'Assigned', 'correct': false},
+        {'text': 'Deferred', 'correct': false},
+        {'text': 'Classified', 'correct': false},
       ],
     },
     {
-      'questionText': '요구사항 분석 기법 중 형식적으로 정의된 의미를 지닌 언어로 요구 사항을 표현하는 기법은?',
+      'questionText': '다음 중 기본 테이블의 존재 여부에 관계 없이 뷰 생성 속성은?',
       'answers': [
-        {'text': '정형 분석', 'correct': true},
-        {'text': '개념 모델링', 'correct': false},
-        {'text': '요구사항 할당', 'correct': false},
-        {'text': '요구사항 협상', 'correct': false},
+        {'text': 'REPLACE', 'correct': false},
+        {'text': 'FORCE', 'correct': true},
+        {'text': 'NOFORCE', 'correct': false},
+        {'text': 'WITH CHECK OPTION', 'correct': false},
       ],
     },
     {
-      'questionText':
-          '다음 중 UI 화면 설계에서 이해관계자들과의 화면구성을 협의하거나 서비스의 간략한 흐름을 공유하기 위해 화면 단위의 레이아웃을 설계하는 작업은?',
+      'questionText': '다음 중 DRM의 구성요소로 올바르지 않은 것은?',
       'answers': [
-        {'text': '와이어 프레임(Wireframe)', 'correct': true},
-        {'text': '스토리보드(Storyboard)', 'correct': false},
-        {'text': '종이 기반 프로토타입(Prototype)', 'correct': false},
-        {'text': '디지털 기반 프로토타입(Prototype)', 'correct': false},
-      ],
-    },
-    {
-      'questionText':
-          '객체의 상태가 변하면 의존성에 의해 이 객체에 연결된 모든 다른 객체들에 알림이 가고 업데이트 할 수 있는 디자인 패턴은?',
-      'answers': [
-        {'text': 'Observer Pattern', 'correct': true},
-        {'text': 'Bridge Pattern', 'correct': false},
-        {'text': 'Factory Method Pattern', 'correct': false},
-        {'text': 'Adapter Pattern', 'correct': false},
-      ],
-    },
-    {
-      'questionText':
-          '수신 시스템의 WAS에서 송신 시스템 DB로 연결하는 DB 커넥션 풀(DB Connection Pool)을생성하고 연계 프로그램에서 해당 DB 커넥션풀 명을 이용하는 방식 연계 기술은?',
-      'answers': [
-        {'text': 'DB 링크 기술', 'correct': false},
-        {'text': 'DB 연결 기술', 'correct': true},
-        {'text': 'JDBC 기술', 'correct': false},
-        {'text': '소켓(Socket) 기술', 'correct': false},
-      ],
-    },
-    {
-      'questionText':
-          '소프트웨어 개발에 국한되지 않고 조직과 사업 등 기업경영 전반으로 사용 범위가 확산되고 있는 개발 방법론은?',
-      'answers': [
-        {'text': 'CBD 개발방법론', 'correct': false},
-        {'text': '애자일 개발방법론', 'correct': true},
-        {'text': '구조적 개발방법론', 'correct': false},
-        {'text': '워터폴 개발방법론', 'correct': false},
-      ],
-    },
-    {
-      'questionText':
-          '- 아키텍처 품질 속성을 만족시키는지 판단 및 품질 속성들의 이해 상충 관계까지 평가하는 비용 평가 모델은?',
-      'answers': [
-        {'text': 'SAAM', 'correct': false},
-        {'text': 'ADR', 'correct': false},
-        {'text': 'CBAM', 'correct': false},
-        {'text': 'ATAM', 'correct': true},
-      ],
-    },
-    {
-      'questionText': '',
-      'answers': [
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '',
-      'answers': [
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '',
-      'answers': [
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '',
-      'answers': [
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-      ],
-    },
-    {
-      'questionText': '',
-      'answers': [
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
-        {'text': '', 'correct': false},
+        {'text': '패키저(Packager)', 'correct': false},
+        {'text': 'DRM 콘텐츠', 'correct': false},
+        {'text': '클리어링 하우스', 'correct': false},
+        {'text': '젠킨스(Jenkins)', 'correct': true},
       ],
     },
     {
@@ -268,7 +182,7 @@ class _QuizPageH extends State<QuizPageH> {
           backgroundColor: Colors.black,
           title: const Center(
             child: Text(
-              '소프트웨어 설계',
+              '소프트웨어 개발',
               style: TextStyle(color: Colors.white),
             ),
           ),

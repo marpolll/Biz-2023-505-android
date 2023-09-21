@@ -49,6 +49,11 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
           width: double.infinity,
           height: double.infinity,
         ),
+        Container(
+          color: Colors.black.withOpacity(0.4),
+          width: double.infinity,
+          height: double.infinity,
+        ),
       ],
     );
   }

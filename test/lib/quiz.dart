@@ -7,7 +7,7 @@ class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int questionIndex;
   final Function answerQuestion;
-  final int totalQuestions;
+  // final int totalQuestions;
   // final int progress;
 
   const Quiz({
@@ -15,7 +15,7 @@ class Quiz extends StatelessWidget {
     required this.answerQuestion,
     required this.questions,
     required this.questionIndex,
-    required this.totalQuestions,
+    // required this.totalQuestions,
     // required this.progress, // 수정된 부분
   }) : super(key: key);
 
@@ -36,8 +36,12 @@ class Quiz extends StatelessWidget {
                 ...(questions[questionIndex]["answers"]
                         as List<Map<String, Object>>)
                     .map((answer) {
-                  return Answer(() => answerQuestion(answer['correct'] as bool),
-                      answer['text'] as String);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Answer(
+                        () => answerQuestion(answer['correct'] as bool),
+                        answer['text'] as String),
+                  );
                 }).toList(),
               ],
             ),
